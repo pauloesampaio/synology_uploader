@@ -45,7 +45,7 @@ class Client:
         self.session_token = auth_data["data"]["synotoken"]
         self.session_id = auth_data["data"]["sid"]
 
-    def list_files(self, folder_path="/polalife/data/to_predict"):
+    def list_files(self, folder_path):
         """
         List files in the specified folder.
 
@@ -64,7 +64,7 @@ class Client:
         file_list_response = requests.get(files_url, params=file_list_params)
         file_list_response.raise_for_status()
         file_list_data = file_list_response.json()
-        print(file_list_data)
+        return file_list_data
 
     def download(self, remote_file_path, local_folder_path):
         """
